@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>LED CUBE</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap" rel="stylesheet">
+	</head>
+
+	<body style="background-color: #D3D7CF;"></body>
+		<nav class="navbar navbar-expand-lg bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="index.html"><h1 style="font-family:Gowun Batang; font-style: Gowun Batang; font-weight: bold; font-size: 30px;">ARAVIND PANACHICKAL</h1></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+					<ul class="navbar-nav" style="font-size: 20px;">
+						<li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="../about.html">About me</a></li>
+						<li class="nav-item"><a class="nav-link active" href="../projects.html">Projects</a></li>
+						<li class="nav-item"><a class="nav-link" href="../tutorials.html">Tutorials</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<h1 class="container-fluid text-center" style="font-family: 'Roboto Serif', serif; padding-bottom: 10px; padding-top: 30px">LED CUBE</h1>
+		<img class="img-fluid mx-auto d-block" style="width: 25%;" src="../images/LED_cube.png" alt="LED CUBE" />
+		<p class="container-fluid" style="text-align: justify; font-family: 'Roboto Serif', serif; padding-top: 30px; padding-bottom:1pt; padding-left: 10%; padding-right:10%; font-size: large;">
+			The project created a 3D LED matrix. Using this LED matrix we can show wonderful and captivating patterns and lighting effects. This device can be used as a showcase item or can be placed 
+			on a table. It is an open source project and we were just replicating the idea in our own way. We used a 4x4x4 matrix totalling 64 LEDs with 4 layers and 16 columns. Since we like blue color 
+			we selected blue leds for this project. An Atmega328P Microcontroller is used as the brain of the device. It uses a 3.7 V lithium ion battery along with a lithium ion charger module to power 
+			the device. The code is written in arduino IDE using C++ language. Since the chip is used as bare minimum we need to program it using an FTDI breakout board. 
+			<a href="https://www.youtube.com/watch?v=S96z4i-5NVM" target="_blank"> Watch the video in youtube</a>
+		</p>
+		<p class="container-fluid" style="text-align: justify; font-family: 'Roboto Serif', serif; padding-top: 30px; padding-bottom:1pt; padding-left: 10%; padding-right:10%; font-size: large;">
+			Initially we gathered all the components required for this project including LEDs, resistors, ICs, materials for casing etc. Then started building the device. The first problem we faced was that when using LEDs, we see 
+			the light falling on objects in front of the LED but not in the LED itself. We need to confine the light emitted by the LED inside itself without creating a beam which will make the whole 
+			device a total disaster. The idea which we came up with is to scratch the smooth surface of the LED to make it rough so that the light produced will be diffused at the surface and will 
+			reduce the amount of light being transmitted as a beam. Hence creating more blue glow inside the led itself. The next task we need to address is the creation of the LED matrix itself. 
+			We need to properly align each LED in a particular distance. The uniformity in the distance between each LED is key for obtaining a proper visual effect. So the common method people use 
+			is to create a stencil or a holder to keep every LEDs in place and solder them together to create each layer at a time. We used thick cardboard to make the stencil. Drawn square grid with 
+			desired distance (say 4cm) and drilled holes in the grid cross points. Then we placed LEDs in the holes with the leads aligned in the proper direction for easy bending. Bending the leads 
+			are crucial to make sure the connections are made correctly. The bended leads are soldired together to make the connection and the leads itself give the structural support for the led. 
+			The connections are in such a way that every anodes in a layer is connected together and the cathods of each columns are connected together. You can observe the same in the schematic diagram. 
+			Hence by selecting a particular layer and particular column we can select each LED individually. Resistors are added in each connection to limit the current flowing through the LEDs. The column 
+			connections are easy for soldiering and will support the vertical positions of the leds. The cathod connections are still in the air to take connection to these layers, we need to use copper wires 
+			with moderate thinckness to also provide an added rigidity.</p>
+		<p class="container-fluid" style="text-align: justify; font-family: 'Roboto Serif', serif; padding-top: 30px; padding-bottom:1pt; padding-left: 10%; padding-right:10%; font-size: large;">
+			Finally we get 20 connections to the Atmega328P IC. All these connections are soldired on a piece of square common PCB and another 
+			common PCB is used for holding the IC and the resistors. Then the matrix connections are directly connected to the GPIO pins of the chip since the IC can provide the necessary current required by 
+			the LEDs. Initially all the LEDs are checked individually and together to confirm that there are no faulty connections or LEDs are there. Second PCB is made such a way that all the necessary 
+			components for the working of the Atmega328P IC is present and ther are connection pins to program the IC. I used an IC base also so that it is easy to swap the IC. Atmega328P is a simple 8bit 
+			microcontroller which can be programmed using Arduion IDE. It contain ADCs GPIOs and PWM capablity. In this project we are using only the digital GPIO pins. Atmega328P IC require a 16 Mhz clock 
+			signal which is to be supplied externally. Using crystal oscillators as shown in the schematic diagram. The IC is 5V tolerable hence it can work with the 3.7V of the lithium ion battery. 
+			I choose an opensource pattern showing code to burn in the IC. Using an FTDI breakout board is an easy way to program an Atmega328P IC out of its Arduino development boards. We have salvaged some 
+			lithium ion cells from old laptop battery with a TP4056 lithium ion battery charger module and a switch to power the device. Finally we enclosed the PCB inside a casing madeout of wood and the 
+			switch is placed on the side of the casing for easy access. The common PCB having the LED matrix is fixed on the top of the casing and a hole is provided for connecting a charger to the charger 
+			module.</p>
+			<p class="container-fluid" style="text-align: justify; font-family: 'Roboto Serif', serif; padding-top: 30px; padding-bottom:1px; padding-left: 10%; padding-right:10%; font-size: large;">
+			Overall the project was fun and satisfying. The most frustrating and time taking process was to make the LED surface rough using a sand paper. Since the LED is small and I used a low 
+			grade sand paper, it was tricky to get the necessary result. The matrix making stage needed high soldireing skill and patience to correctly align everything. PCB making part is more fun and 
+			most easy part was the programming of the IC. Finally the device is working smoothly and we enjoyed a lot watching different patterns of light. There were a lot of patterns in the code but 
+			wee choose some of them which we felt beautiful. This project can be done for fun and learning soldiering and programming.
+
+		</p>
+		<footer class="bg-light footer" style="position: absolute; bottom: -1; width: 100%;">
+			<div class="text-center p-3">
+				© 2024 Aravind Panachickal
+			</div>
+		</footer>
+	</body>
+</html>
